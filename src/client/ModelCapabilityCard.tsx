@@ -11,7 +11,10 @@ export type ModelCapabilityCardProps = ModelCapabilityCardInjected
 
 /** Plugin configuration card: per-model capability descriptions. */
 export function ModelCapabilityCard({ scope, t }: ModelCapabilityCardProps): React.ReactElement {
-  const snapshot = useSyncExternalStore(scope.subscribe, scope.getSnapshot)
+  const snapshot = useSyncExternalStore(
+    (cb) => scope.subscribe(cb),
+    () => scope.getSnapshot(),
+  )
   const value = snapshot.value ?? { descriptions: [] }
   const [draft, setDraft] = React.useState(value.descriptions)
   const [savedAt, setSavedAt] = React.useState<number>(-1)
