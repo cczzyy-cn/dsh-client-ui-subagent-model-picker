@@ -1,6 +1,6 @@
 {
   "name": "@dsh-external/dsh-client-ui-subagent-model-picker",
-  "version": "0.1.1",
+  "version": "0.1.2",
   "description": "Subagent model picker: configuration card for per-model capability descriptions",
   "type": "module",
   "main": "./lib/index.js",
