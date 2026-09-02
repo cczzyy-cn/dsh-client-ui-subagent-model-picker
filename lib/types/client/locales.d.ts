@@ -4,6 +4,7 @@ export declare const en: {
     'field.provider': string;
     'field.model': string;
     'field.capabilities': string;
+    'field.noModels': string;
     'action.add': string;
     'action.save': string;
     'action.remove': string;
@@ -15,6 +16,7 @@ export declare const zh: {
     'field.provider': string;
     'field.model': string;
     'field.capabilities': string;
+    'field.noModels': string;
     'action.add': string;
     'action.save': string;
     'action.remove': string;

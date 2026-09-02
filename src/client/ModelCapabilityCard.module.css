@@ -1,5 +1,6 @@
 /* Subagent model picker configuration card: mirrors the plugin-card chrome
-   (name over description, body, save footer) so it matches other plugin cards. */
+   (name over description, collapsible body, save footer) so it matches other
+   plugin cards, in a single narrow column that fits the UI block. */
 .card {
   list-style: none;
   border: 0.5px solid var(--dsw-alias-border-l4);
@@ -10,11 +11,13 @@
 
 .header {
   width: 100%;
+  appearance: none;
   border: 0;
   background: none;
   font: inherit;
   color: inherit;
   text-align: left;
+  cursor: pointer;
   display: flex;
   align-items: center;
   gap: 12px;
@@ -43,31 +46,42 @@
   color: var(--dsw-alias-label-tertiary);
 }
 
+.chevron {
+  flex: none;
+  color: var(--dsw-alias-label-tertiary);
+  transition: transform .16s;
+}
+
+.chevronOpen {
+  transform: rotate(180deg);
+}
+
 .body {
   border-top: 0.5px solid var(--dsw-alias-border-l2);
   margin: 0 16px;
   padding: 12px 0 12px;
   display: flex;
   flex-direction: column;
-  gap: 10px;
+  gap: 6px;
 }
 
-.fieldRow {
-  display: grid;
-  grid-template-columns: 1fr 1fr 1.4fr auto;
-  gap: 8px;
-  align-items: center;
+.label {
+  font-size: 13px;
+  line-height: 1.5;
+  color: var(--dsw-alias-label-secondary);
+  margin-top: 4px;
 }
 
-.removeBtn {
-  justify-self: end;
+.select,
+.capability {
+  width: 100%;
 }
 
 .footer {
   display: flex;
   align-items: center;
   gap: 8px;
-  margin-top: 2px;
+  margin-top: 8px;
 }
 
 .saved {

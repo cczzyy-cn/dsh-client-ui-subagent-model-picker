@@ -2,11 +2,9 @@ import type { Context as ClientContext } from '@deepseek-ai/cordis';
 import { type SettingsKey } from './locales.ts';
 declare module '@deepseek-ai/dsh-client-ui-slots' {
     interface LocaleNamespaceMap {
-        /** Subagent model picker configuration card copy. */
         '@dsh-external/dsh-client-ui-subagent-model-picker': SettingsKey;
     }
     interface SlotMap {
-        /** One plugin's card inside the plugin configuration section. */
         'settings.plugin.item': {
             kind: 'keyed';
             scope: 'root';
@@ -16,7 +14,6 @@ declare module '@deepseek-ai/dsh-client-ui-slots' {
         };
     }
 }
-/** Settings namespace this card edits (matches the host plugin's registration). */
 export declare const SETTINGS_NS = "subagent-model-picker";
 export interface SettingsValue {
     descriptions: Array<{
