@@ -1,7 +1,3 @@
-/**
- * Subagent model picker — browser half. Registers a plugin configuration card
- * under `settings.plugin.item` keyed to `subagent-model-picker`.
- */
 import type { Context as ClientContext } from '@deepseek-ai/cordis';
 import { type SettingsKey } from './locales.ts';
 declare module '@deepseek-ai/dsh-client-ui-slots' {
