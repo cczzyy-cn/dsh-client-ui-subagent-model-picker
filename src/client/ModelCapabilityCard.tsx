@@ -41,7 +41,10 @@ export function ModelCapabilityCard({ scope, t, loadModels }: ModelCapabilityCar
       if (cancelled) return
       setModels(ms)
       setSelected((prev) => prev || ms[0]?.key || '')
-    }).catch(() => setModels([]))
+    }).catch((err: unknown) => {
+      console.error('[dsh-client-ui-subagent-model-picker] loadModels failed:', err)
+      setModels([])
+    })
     return () => { cancelled = true }
   }, [loadModels])
 

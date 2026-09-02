@@ -69,7 +69,7 @@ export function apply(ctx: ClientContext): void {
       }
     }) => void): void
   }
-  scoped.inject(['settingsScope', 'remote.session'], (scopedCtx) => {
+  scoped.inject(['settingsScope', 'remote', 'remote.session'], (scopedCtx) => {
     const scope = scopedCtx.settingsScope.bind({ namespace: SETTINGS_NS })
     const loadModels = async (): Promise<ModelOption[]> => {
       const res = await scopedCtx.remote.session.modelCatalog()
