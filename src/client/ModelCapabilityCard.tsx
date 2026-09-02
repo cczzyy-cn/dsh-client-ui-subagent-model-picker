@@ -1,5 +1,5 @@
 import React, { useEffect, useState, useSyncExternalStore } from 'react'
-import { Button, IconChevronDownOutline14, Input } from '@deepseek-ai/dsh-client-ui-primitives'
+import { Button, IconChevronDownOutline14 } from '@deepseek-ai/dsh-client-ui-primitives'
 import type { SettingsScope } from '@deepseek-ai/dsh-client-ui-settings/client'
 import type { SettingsValue } from './index.ts'
 import css from './ModelCapabilityCard.module.css'
@@ -29,7 +29,7 @@ export function ModelCapabilityCard({ scope, t, loadModels }: ModelCapabilityCar
     () => scope.getSnapshot(),
   )
   const entries = snapshot.value?.descriptions ?? []
-  const [open, setOpen] = useState(true)
+  const [open, setOpen] = useState(false)
   const [models, setModels] = useState<ModelOption[]>([])
   const [selected, setSelected] = useState('')
   const [cap, setCap] = useState('')
@@ -89,7 +89,13 @@ export function ModelCapabilityCard({ scope, t, loadModels }: ModelCapabilityCar
             ))}
           </select>
           <label className={css.label}>{t('field.capabilities')}</label>
-          <Input className={css.capability ?? ''} placeholder={t('field.capabilities')} value={cap} onChange={(e) => setCap(e.target.value)} />
+          <textarea
+            className={css.textarea}
+            placeholder={t('field.capabilities')}
+            value={cap}
+            rows={4}
+            onChange={(e) => setCap(e.target.value)}
+          />
           <div className={css.footer}>
             <Button variant="primary" disabled={!selected} onClick={() => void save()}>{t('action.save')}</Button>
             {savedAt > 0 && <span className={css.saved}>{t('action.saved')}</span>}

@@ -59,7 +59,7 @@
 .body {
   border-top: 0.5px solid var(--dsw-alias-border-l2);
   margin: 0 16px;
-  padding: 12px 0 12px;
+  padding: 14px 0 14px;
   display: flex;
   flex-direction: column;
   gap: 6px;
@@ -72,16 +72,53 @@
   margin-top: 4px;
 }
 
-.select,
-.capability {
+/* The model selector styled like the primitives Input (same tokens). */
+.select {
   width: 100%;
+  height: 32px;
+  padding: 0 8px;
+  border: 0.5px solid var(--dsw-alias-border-l4);
+  border-radius: 8px;
+  background: var(--dsw-alias-bg-layer-1);
+  color: var(--dsw-alias-label-primary);
+  font-size: 14px;
+  line-height: 22px;
+}
+
+.select:focus-visible {
+  outline: 2px solid var(--dsw-alias-brand-primary);
+  outline-offset: -2px;
+}
+
+/* The capability description: a taller multiline box, styled like Input. */
+.textarea {
+  width: 100%;
+  min-height: 96px;
+  padding: 8px;
+  border: 0.5px solid var(--dsw-alias-border-l4);
+  border-radius: 8px;
+  background: var(--dsw-alias-bg-layer-1);
+  color: var(--dsw-alias-label-primary);
+  font-size: 14px;
+  line-height: 22px;
+  font-family: inherit;
+  resize: vertical;
+}
+
+.textarea::placeholder {
+  color: var(--dsw-alias-label-dimmed);
+}
+
+.textarea:focus-visible {
+  outline: 2px solid var(--dsw-alias-brand-primary);
+  outline-offset: -2px;
 }
 
 .footer {
   display: flex;
   align-items: center;
   gap: 8px;
-  margin-top: 8px;
+  margin-top: 10px;
 }
 
 .saved {

@@ -25,7 +25,7 @@ declare module '@deepseek-ai/dsh-client-ui-slots' {
 }
 
 /** Exports the card renders with; an older host lacking any disables the card. */
-const REQUIRED_PRIMITIVES = ['Button', 'Input', 'IconChevronDownOutline14'] as const
+const REQUIRED_PRIMITIVES = ['Button', 'IconChevronDownOutline14'] as const
 
 function missingPrimitives(mod: Record<string, unknown>): string[] {
   return REQUIRED_PRIMITIVES.filter((name) => typeof mod[name] !== 'function')
