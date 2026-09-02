@@ -58,7 +58,11 @@ export function apply(ctx: ClientContext): void {
   const scoped = ctx as unknown as {
     inject(services: string[], callback: (scopedCtx: {
       settingsScope: { bind(spec: { namespace: string }): SettingsScope<SettingsValue> }
-      remote: { session: { modelCatalog(): Promise<{ groups: Array<{ id: string; name: string; models: Array<{ id: string; name: string }> }> }> } }
+      remote: { session: { modelCatalog(): Promise<{
+        ok: boolean
+        value?: { groups: Array<{ id: string; name: string; models: Array<{ id: string; name: string }> }> }
+        error?: { code: string; message: string }
+      }> } }
       slots: {
         inject(slot: string, register: () => void): void
         register(opts: { name: string; key: string; locale: string; inject: () => ModelCapabilityCardInjected }, comp: typeof ModelCapabilityCard): unknown
@@ -68,8 +72,11 @@ export function apply(ctx: ClientContext): void {
   scoped.inject(['settingsScope', 'remote.session'], (scopedCtx) => {
     const scope = scopedCtx.settingsScope.bind({ namespace: SETTINGS_NS })
     const loadModels = async (): Promise<ModelOption[]> => {
-      const cat = await scopedCtx.remote.session.modelCatalog()
-      return (cat.groups ?? []).flatMap((g) => (g.models ?? []).map((m) => ({
+      const res = await scopedCtx.remote.session.modelCatalog()
+      if (!res.ok || res.value === undefined) {
+        throw new Error(res.error ? `${res.error.code}: ${res.error.message}` : 'model catalog unavailable')
+      }
+      return (res.value.groups ?? []).flatMap((g) => (g.models ?? []).map((m) => ({
         key: `${g.id}/${m.id}`,
         provider: g.id,
         model: m.id,
