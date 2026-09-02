@@ -27,7 +27,15 @@
   "files": [
     "lib/index.js",
     "lib/client.js",
-    "lib/types/**/*.d.ts"
+    "lib/types/**/*.d.ts",
+    "LICENSE"
   ],
-  "license": "BSD-3-Clause"
+  "license": "BSD-3-Clause",
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/cczzyy-cn/dsh-client-ui-subagent-model-picker.git"
+  },
+  "engines": {
+    "node": ">=20"
+  }
 }
